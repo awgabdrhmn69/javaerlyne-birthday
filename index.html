@@ -72,4 +72,144 @@
         p {
             font-size: 1.3em;
             line-height: 1.6;
-            color: #66
+            color: #666;
+            margin: 15px 0;
+            padding: 0 10px;
+        }
+
+        .highlight {
+            color: #ff8fab;
+            font-weight: bold;
+        }
+
+        /* --- Images & Decorations --- */
+        .cute-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ffc8dd;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .decoration {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* --- Navigation Buttons --- */
+        .nav-buttons {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            background-color: #ff8fab;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 143, 171, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background-color: #ff5c8d;
+        }
+
+        button:disabled {
+            background-color: #ffc2d1;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* --- Animation --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <div class="page active" id="page1">
+            <div class="decoration">🎀 🌷 🎀</div>
+            <h1>Happy<br>Birthday<br>Javaerlyne</h1>
+            <p style="margin-top: 20px;">(Click next!)</p>
+        </div>
+
+        <div class="page" id="page2">
+            <div class="decoration">✨</div>
+            <p>
+                May all your dreams come true. <br><br>
+                I'm so lucky to have a <span class="highlight">wonderful person</span> like you in my life.
+            </p>
+        </div>
+
+        <div class="page" id="page3">
+            <img src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-cat.gif" alt="Cute Kitty" class="cute-img">
+            
+            <p style="font-size: 1.1em; font-weight: 600;">
+                "Walaupun baju ya besarr, simpan jakla jadi kenangan HAHAHA"
+            </p>
+            <p style="font-size: 1em;">
+                Please enjoy the gifts that I gave hehe
+            </p>
+        </div>
+
+        <div class="page" id="page4">
+            <div class="decoration">🥂 🎂</div>
+            <p>
+                Here's to many more<br>amazing years!
+            </p>
+            <h1>Enjoy your day!</h1>
+        </div>
+
+        <div class="nav-buttons">
+            <button id="prevBtn" onclick="changePage(-1)" disabled>Back</button>
+            <button id="nextBtn" onclick="changePage(1)">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 4;
+
+        function changePage(direction) {
+            // Hide current page
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+
+            // Update page number
+            currentPage += direction;
+
+            // Show new page
+            document.getElementById(`page${currentPage}`).classList.add('active');
+
+            // Enable/Disable buttons based on page number
+            document.getElementById('prevBtn').disabled = (currentPage === 1);
+            
+            // If on the last page, change "Next" text to "Finish" or hide it
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentPage === totalPages) {
+                nextBtn.innerText = "❤️";
+                nextBtn.disabled = true; // Optional: stop clicking at the end
+            } else {
+                nextBtn.innerText = "Next";
+                nextBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
