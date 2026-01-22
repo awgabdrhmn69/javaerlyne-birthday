@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Javaerlyne!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* --- General Styles --- */
+        /* --- General Setup --- */
         body {
             margin: 0;
             padding: 0;
-            background-color: #ffe6ea; /* Pastel Pink Background */
-            /* Creating a simple plaid pattern to match the PDF */
+            background-color: #ffe6ea;
+            /* Plaid pattern background */
             background-image: 
                 linear-gradient(90deg, rgba(255,255,255,.5) 50%, transparent 50%),
                 linear-gradient(rgba(255,255,255,.5) 50%, transparent 50%);
@@ -22,108 +22,54 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            overflow: hidden; /* Prevents scrolling */
         }
 
         /* --- The Card Container --- */
         .card-container {
             background: white;
             width: 90%;
-            max-width: 600px;
-            padding: 40px;
+            max-width: 500px;
+            height: 600px; /* Fixed height for the card feel */
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
             text-align: center;
-            border: 5px solid #bde0fe; /* Light Blue Border */
+            border: 8px solid #bde0fe; /* Light Blue Border */
             position: relative;
-            margin: 20px 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        /* --- Header Section --- */
+        /* --- Pages (Slides) --- */
+        .page {
+            display: none; /* Hide all pages by default */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page.active {
+            display: flex; /* Only show the active page */
+        }
+
+        /* --- Typography --- */
         h1 {
             font-family: 'Pacifico', cursive;
-            color: #ff8fab; /* Hot Pink */
-            font-size: 3em;
-            margin-bottom: 10px;
-            line-height: 1.2;
-            text-shadow: 2px 2px 0px #fff, 4px 4px 0px #bde0fe;
-        }
-
-        /* --- Decorative Elements --- */
-        .decoration {
-            font-size: 40px;
-            margin: 10px;
-        }
-
-        /* --- Message Text --- */
-        p.message {
-            font-size: 1.2em;
-            line-height: 1.6;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        /* --- The Funny Note Section (Gray Box) --- */
-        .funny-note {
-            background-color: #f0f8ff;
-            border: 2px dashed #bde0fe;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .funny-note p {
-            margin: 5px 0;
-            font-weight: 600;
-        }
-
-        /* --- Image Placeholder --- */
-        .cute-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%; /* Makes the image a circle */
-            object-fit: cover;
-            border: 4px solid #ffc8dd;
-            margin: 20px auto;
-            display: block;
-        }
-
-        /* --- Footer --- */
-        .footer-text {
-            font-family: 'Pacifico', cursive;
             color: #ff8fab;
-            font-size: 1.5em;
-            margin-top: 30px;
+            font-size: 3em;
+            margin: 0;
+            line-height: 1.3;
+            text-shadow: 3px 3px 0px #fff, 5px 5px 0px #bde0fe;
         }
 
-        /* --- Mobile Responsiveness --- */
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2em; }
-            .card-container { padding: 20px; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="card-container">
-        <div class="decoration">🌷 ✨ 🌷</div>
-
-        <h1>Happy Birthday<br>Javaerlyne</h1>
-        
-        <p class="message">
-            May all your dreams come true. I'm so lucky to have a wonderful person like you in my life.
-        </p>
-
-        <div class="funny-note">
-            <img src="https://media.tenor.com/KshIPrRS1aAAAAAM/cat-orange-cat.gif" alt="Cute Kitty" class="cute-img">
-            
-            <p>"Walaupun baju ya besarr, simpan jakla jadi kenangan HAHAHA"</p>
-            <p>Please enjoy the gifts that I gave hehe</p>
-        </div>
-
-        <div class="footer-text">
-            Here's to many more amazing years! 🥂
-        </div>
-    </div>
-
-</body>
-</html>
+        p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            color: #66
